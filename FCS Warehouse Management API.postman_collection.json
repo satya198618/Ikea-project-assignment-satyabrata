@@ -1,0 +1,384 @@
+{
+	"info": {
+		"_postman_id": "2ac76936-c247-49cf-8413-1f59e2e13818",
+		"name": "FCS Warehouse Management API",
+		"description": "Complete API collection for FCS Warehouse Management System including Warehouse, Store, and Product endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14039098"
+	},
+	"item": [
+		{
+			"name": "Warehouses",
+			"item": [
+				{
+					"name": "Create Warehouse",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n  \"businessUnitCode\": \"MMWH.089\",\n  \"location\": \"HELMOND-001\",\n  \"capacity\": 40,\n  \"stock\": 11\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/warehouse",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"warehouse"
+							]
+						},
+						"description": "Create a new warehouse with business unit code, location, capacity, and initial stock"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Warehouse by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/warehouse/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"warehouse",
+								"2"
+							]
+						},
+						"description": "Retrieve warehouse details by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Archive Warehouse",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/warehouse/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"warehouse",
+								"4"
+							]
+						},
+						"description": "Archive a warehouse (soft delete)"
+					},
+					"response": []
+				},
+				{
+					"name": "Replace Warehouse",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"location\": \"VETSBY-001\",\n  \"capacity\": 40,\n  \"stock\": 11\n}\n"
+						},
+						"url": {
+							"raw": "{{base_url}}/warehouse?businessUnitCode=MMWH.089",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"warehouse"
+							],
+							"query": [
+								{
+									"key": "businessUnitCode",
+									"value": "MMWH.089"
+								}
+							]
+						},
+						"description": "Replace an existing warehouse with a new one at a different location"
+					},
+					"response": []
+				}
+			],
+			"description": "Warehouse management endpoints - Create, Get, Archive, and Replace warehouses"
+		},
+		{
+			"name": "Stores",
+			"item": [
+				{
+					"name": "Create Store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Amsterdam Central Store\",\n  \"location\": \"Amsterdam, Netherlands\",\n  \"managerId\": \"MGR-001\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/store",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"store"
+							]
+						},
+						"description": "Create a new store"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Stores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/store",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"store"
+							]
+						},
+						"description": "Retrieve all stores"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Store by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/store/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"store",
+								"2"
+							]
+						},
+						"description": "Retrieve store details by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Store",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Amsterdam Central Store - Updated\",\n  \"location\": \"Amsterdam, Netherlands\",\n  \"managerId\": \"MGR-002\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/store/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"store",
+								"1"
+							]
+						},
+						"description": "Update store details"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Store",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"managerId\": \"MGR-003\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/store/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"store",
+								"2"
+							]
+						},
+						"description": "Partially update store details"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Store",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/store/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"store",
+								"2"
+							]
+						},
+						"description": "Delete a store"
+					},
+					"response": []
+				}
+			],
+			"description": "Store management endpoints - Full CRUD operations"
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Laptop\",\n  \"sku\": \"PROD-001\",\n  \"price\": 999.99,\n  \"category\": \"Electronics\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/product",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"product"
+							]
+						},
+						"description": "Create a new product"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/product",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"product"
+							]
+						},
+						"description": "Retrieve all products"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/product/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"product",
+								"2"
+							]
+						},
+						"description": "Retrieve product details by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Gaming Laptop\",\n  \"sku\": \"PROD-001\",\n  \"price\": 1499.99,\n  \"category\": \"Electronics\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/product/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"product",
+								"3"
+							]
+						},
+						"description": "Update product details"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/product/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"product",
+								"4"
+							]
+						},
+						"description": "Delete a product"
+					},
+					"response": []
+				}
+			],
+			"description": "Product management endpoints - Full CRUD operations"
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
